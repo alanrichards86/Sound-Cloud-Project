@@ -55,3 +55,18 @@ form {
 #artist_button:hover:before {
   content:"Lets Do This !";
 }
+#artistDisplay {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  height: 100vh;
+  background-color: red;
+  margin-top: 3vh;
+}
+.results {
+  width: 11em;
+  height: 16em;
+  margin: 2vh 2.5vw;
+  background-color: purple;
+}
