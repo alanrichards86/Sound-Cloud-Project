@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SoundCloud Music Search</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div id="pageTopper">
+      <header class="header">
+        <h1>!The Music You Want to Hear!</h1>
+      </header>
+      <section class="player">
+        <audio class="music-player" controls="controls" src=""></audio>
+      </section>
+    </div>
+    <hr>
+    <section class="search">
+      <form class="search-form">
+        <input type='text' id="artistInput" placeholder="Who would you like to listen to ?">
+        <button id="artist_button" type="submit" value="artist-request"><span class="btnSpan">Click Me !</span></button>
+      </form>
+    </section>
+    <section class="results"></section>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>

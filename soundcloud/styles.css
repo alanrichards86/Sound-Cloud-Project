@@ -1,0 +1,57 @@
+body {
+  background-color: #10BEB8;
+}
+#pageTopper {
+  background-color: #8BD57A;
+  border-radius: 10px;
+}
+.header {
+  text-align: center;
+  color:  white;
+}
+.header h1 {
+  font-weight: 100;
+  text-shadow: -4px 3px .5px black;
+}
+.player {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  border-radius: 2.7em;
+  background-color: #49D569;
+  opacity: .7;
+}
+.player audio {
+  width: 80%;
+}
+form {
+  display: flex;
+  justify-content: center;
+  margin-top: 2em;
+  height: 5vh;
+}
+#artistInput {
+  width: 50%;
+  background-color: #C9CEFC;
+  font-size: 1.5em;
+  text-align: center;
+  color-opacity: .7;
+  caret-color: purple;
+  color: black;
+  text-shadow: 1px 1px 2px #62B0F6;
+}
+#artist_button {
+  border: .5px solid white;
+  margin-left: 1.5em;
+  width: 10%;
+  border-radius: .5em;
+  background-color: #62B0F6;
+  color: white;
+}
+#artist_button:hover span {
+  display:none;
+}
+#artist_button:hover:before {
+  content:"Lets Do This !";
+}
