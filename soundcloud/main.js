@@ -4,39 +4,38 @@
 
 // 1. First select and store the elements you'll be working with
 
-var audio = document.querySelector('#audioPlayer');
+var audio = ""; document.querySelector('#audioPlayer');
 var form = document.querySelector('#mainForm');
-var request = new Request('https://api.soundcloud.com/tracks?client_id=095fe1dcd09eb3d0e1d3d89c76f5618f')
+var results = document.querySelector(".results");
+var request = new Request("http://api.soundcloud.com/users/?client_id=8538a1744a7fdaa59981232897501e04")
 var myInit = { method: 'GET',
                mode: 'no-cors',
                cache: 'default' };
 
 // 2. Create your `onSubmit` event for getting the user's search term
 function sub() {
-  console.log('Hi!');
-  alert('It worked!');
+  event.preventDefault();
+  fetch("http://api.soundcloud.com/users/?client_id=8538a1744a7fdaa59981232897501e04&q=" + form.value)
+    .then(function(response){
+      response.json().then(function(data){
+        console.log(data);
+        console.log(data[0].uri);
+        dataInfo(data)
+})
+})
 }
-
-
-// function sub() {
-//   console.log('Hi!');
-//   fetch('https://api.soundcloud.com/users?client_id=095fe1dcd09eb3d0e1d3d89c76f5618f', myInit).then(
-//     function(response) {
-//      console.log(response);
-//      console.log('Status:', response.status);
-//     response.json().then(function(data){
-//       console.log(data);
-//     });
-//
-//    });
-//  }
-//     function(reject){
-//       console.log("Rejected!");
-//     }
-//   );
-//   // alert(form.artist.value);
-//
-// }
+//Cant get this function to work properly !
+function dataInfo(data) {
+let dataArray = [];
+for(let i = 0; i < data.length; i++)
+fetch(data[i].uri + 'id=8538a1744a7fdaa59981232897501e04&q=')
+.then(function(response){
+  response.json().then(function(data)
+  console.log('hi');
+  console.log(data[i].uri);
+  dataArray.push(data[i].uri);
+  console.log(dataArray);
+}
 
 // 3. Create your `fetch` request that is called after a submission
 

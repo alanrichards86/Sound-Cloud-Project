@@ -49,12 +49,12 @@ form {
   background-color: #62B0F6;
   color: white;
 }
-#artist_button:hover span {
+/*#artist_button:hover span {
   display:none;
 }
 #artist_button:hover:before {
   content:"Lets Do This !";
-}
+}*/
 #artistDisplay {
   display: flex;
   flex-wrap: wrap;
