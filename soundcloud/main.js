@@ -14,27 +14,58 @@ var myInit = { method: 'GET',
 
 // 2. Create your `onSubmit` event for getting the user's search term
 function sub() {
-  event.preventDefault();
-  fetch("http://api.soundcloud.com/users/?client_id=8538a1744a7fdaa59981232897501e04&q=" + form.value)
-    .then(function(response){
-      response.json().then(function(data){
+  try{
+
+    event.preventDefault();
+    fetch("http://api.soundcloud.com/users/?client_id=8538a1744a7fdaa59981232897501e04&q=" + form.value)
+      .then(function(response){
+        return response.json();
+      })
+      .then(function(data){
         console.log(data);
         console.log(data[0].uri);
         dataInfo(data)
-})
-})
+      });
+
+  }catch(error){
+    console.log(error);
+  }
+
 }
+
 //Cant get this function to work properly !
 function dataInfo(data) {
-let dataArray = [];
-for(let i = 0; i < data.length; i++)
-fetch(data[i].uri + 'id=8538a1744a7fdaa59981232897501e04&q=')
-.then(function(response){
-  response.json().then(function(data)
-  console.log('hi');
-  console.log(data[i].uri);
-  dataArray.push(data[i].uri);
-  console.log(dataArray);
+  try{
+    let dataArray = [];
+    for(let i = 0; i < data.length; i++){
+
+      fetch('http://api.soundcloud.com/tracks/'+ data[i].id + '?client_id=8538a1744a7fdaa59981232897501e04')
+        .then(function(response){
+          return response.json();
+        })
+        .then(function(data){
+          if(!data.errors){
+            populateUsers(data);
+          }
+
+          console.log(data);
+          // dataArray.push(data[i].uri);
+          // console.log(dataArray);
+      })
+
+    }
+  }catch(error){
+    console.log(error);
+  }
+}
+
+function populateUsers(data){
+  try{
+
+
+  }catch(error){
+    console.log(error);
+  }
 }
 
 // 3. Create your `fetch` request that is called after a submission
