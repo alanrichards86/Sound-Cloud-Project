@@ -6,7 +6,7 @@
 
 var audio = ""; document.querySelector('#audioPlayer');
 var form = document.querySelector('#mainForm');
-var results = document.querySelector(".results");
+var results = document.querySelector("#artistDisplay");
 var request = new Request("http://api.soundcloud.com/users/?client_id=8538a1744a7fdaa59981232897501e04")
 var myInit = { method: 'GET',
                mode: 'no-cors',
@@ -22,8 +22,8 @@ function sub() {
         return response.json();
       })
       .then(function(data){
+        results.innerHTML = '';
         console.log(data);
-        console.log(data[0].uri);
         dataInfo(data)
       });
 
@@ -45,6 +45,7 @@ function dataInfo(data) {
         })
         .then(function(data){
           if(!data.errors){
+            console.log('hi');
             populateUsers(data);
           }
 
@@ -61,7 +62,30 @@ function dataInfo(data) {
 
 function populateUsers(data){
   try{
+    if(data){
+      // for(let n = 0; n < data.length; n++) {
+      let container = document.createElement('div');
+      let img = document.createElement('img'),
+          named = document.createElement('p'),
+          jeans = document.createElement('p');
 
+      img.src = data.artwork_url;
+      named.innerHTML = data.title;
+      jeans.innerHTML = data.genre;
+      onClick(audio.src.data.stream_url);
+      console.log(img);
+      console.log(named);
+      console.log(jeans);
+
+      container.append(img);
+      container.append(named);
+      container.append(jeans);
+      results.append(container);
+      console.log('hi');
+      // results.appendChild(named);
+      // results.appendChild(jeans);
+      // }
+    }
 
   }catch(error){
     console.log(error);

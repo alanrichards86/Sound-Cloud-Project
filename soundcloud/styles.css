@@ -61,12 +61,16 @@ form {
   flex-direction: row;
   justify-content: center;
   height: 100vh;
-  background-color: red;
+  /*background-color: red;*/
   margin-top: 3vh;
 }
-.results {
+#artistDisplay img {
+  width: 10vw;
+  height: 10vh;
+}
+/*.results {
   width: 11em;
   height: 16em;
   margin: 2vh 2.5vw;
   background-color: purple;
-}
+}*/
