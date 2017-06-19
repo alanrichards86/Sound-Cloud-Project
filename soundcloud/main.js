@@ -7,7 +7,6 @@
 var audio = ""; document.querySelector('#audioPlayer');
 var form = document.querySelector('#mainForm');
 var results = document.querySelector("#artistDisplay");
-var request = new Request("http://api.soundcloud.com/users/?client_id=8538a1744a7fdaa59981232897501e04")
 var myInit = { method: 'GET',
                mode: 'no-cors',
                cache: 'default' };
@@ -33,13 +32,12 @@ function sub() {
 
 }
 
-//Cant get this function to work properly !
 function dataInfo(data) {
   try{
     let dataArray = [];
     for(let i = 0; i < data.length; i++){
 
-      fetch('http://api.soundcloud.com/tracks/'+ data[i].id + '?client_id=8538a1744a7fdaa59981232897501e04')
+      fetch('http://api.soundcloud.com/tracks/'+ data[i].id + '?client_id=095fe1dcd09eb3d0e1d3d89c76f5618f')
         .then(function(response){
           return response.json();
         })
@@ -72,26 +70,46 @@ function populateUsers(data){
       img.src = data.artwork_url;
       named.innerHTML = data.title;
       jeans.innerHTML = data.genre;
-      onClick(audio.src.data.stream_url);
+      // onClick(audio.src.data.stream_url);
       console.log(img);
       console.log(named);
       console.log(jeans);
-
       container.append(img);
       container.append(named);
       container.append(jeans);
       results.append(container);
       console.log('hi');
+      img.onClick = getMusic;
       // results.appendChild(named);
       // results.appendChild(jeans);
       // }
-    }
 
+    // }else if(event) {
+    //   return audio.src = data.stream_url + '?client_id=8538a1744a7fdaa59981232897501e04';
+    //   alert('Its doing something.')
+    // }
+    }
   }catch(error){
-    console.log(error);
+  console.log(error);
+}
+}
+function getMusic(event) {
+  try{
+    if(event){
+    fetch('http://api.soundcloud.com/tracks/?client_id=8538a1744a7fdaa59981232897501e04')
+    .then(function(response){
+      return response.json();
+    })
+    .then(function(data){
+      let music = audio.src.data.stream_url;
+      alert('Its doing something.');
+      return music;
+    });
+    }
+  }catch(error){
+  console.log(error);
   }
 }
-
 // 3. Create your `fetch` request that is called after a submission
 
 // 4. Create a way to append the fetch results to your page
